@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="intro">
+  <p class="eyebrow">ТЕКСТЫ И ЛЕММЫ</p>
+  <h1>Отзывы о банках</h1>
+  <p>Найдите отзывы по тексту или по начальной форме слова. Например, лемма «карта» найдёт и «картой», и «карту».</p>
+</section>
+<form class="filters" action="{{ url_for('index') }}" method="get" role="search">
+  <div class="search-row">
+    <label class="query">Запрос<input name="q" value="{{ q }}" type="search" maxlength="100" placeholder="Например, комиссия"></label>
+    <label>Искать<select name="mode"><option value="text"{% if mode == 'text' %} selected{% endif %}>По тексту</option><option value="lemma"{% if mode == 'lemma' %} selected{% endif %}>По лемме</option></select></label>
+    <button type="submit">Найти отзывы</button>
+  </div>
+  <div class="filter-row">
+    <label>Банк<select name="bank"><option value="0">Все банки</option>{% for b in banks %}<option value="{{ b.bank_id }}"{% if b.bank_id == bank %} selected{% endif %}>{{ b.name }}</option>{% endfor %}</select></label>
+    <label>Оценка<select name="grade"><option value="0">Любая</option>{% for value in range(1, 6) %}<option value="{{ value }}"{% if value == grade %} selected{% endif %}>{{ value }} из 5</option>{% endfor %}</select></label>
+    <a class="quiet" href="{{ url_for('index') }}">Сбросить</a>
+  </div>
+</form>
+<section aria-labelledby="results-title">
+  <div class="results-head"><h2 id="results-title">Отзывы <span class="count">{{ total }}</span></h2>{% if last_page > 1 %}<span>Страница {{ page }} из {{ last_page }}</span>{% endif %}</div>
+  {% for row in rows %}
+  <article class="result">
+    <div class="meta"><span>{{ row.name }}</span><time datetime="{{ row.date_utc }}">{{ row.date_utc.strftime('%d.%m.%Y') }}</time></div>
+    <span class="grade">{{ row.grade }} / 5</span>
+    <h3><a href="{{ url_for('review', review_id=row.review_id, lemma=q if mode == 'lemma' and q else none) }}">{{ row.title }}</a></h3>
+    <p>{{ row.excerpt }}{% if row.excerpt|length == 230 %}…{% endif %}</p>
+  </article>
+  {% else %}<div class="result empty"><h3>Ничего не нашлось</h3><p>Попробуйте изменить запрос, банк или оценку.</p></div>{% endfor %}
+  {% if last_page > 1 %}<nav class="pager" aria-label="Страницы результатов">
+    {% if page > 1 %}<a href="{{ url_for('index', q=q, mode=mode, bank=bank, grade=grade, page=page-1) }}">← Назад</a>{% endif %}
+    {% if page < last_page %}<a href="{{ url_for('index', q=q, mode=mode, bank=bank, grade=grade, page=page+1) }}">Дальше →</a>{% endif %}
+  </nav>{% endif %}
+</section>
+{% endblock %}

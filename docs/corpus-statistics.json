@@ -1,0 +1,434 @@
+{
+  "input": {
+    "csv_rows": 2000,
+    "duplicate_rows": 6,
+    "reviews": 1994,
+    "banks": 36
+  },
+  "rating": {
+    "mean": 4.64,
+    "median": 5.0,
+    "groups": [
+      {
+        "group": "1",
+        "count": 155,
+        "share_pct": 7.77
+      },
+      {
+        "group": "2–3",
+        "count": 19,
+        "share_pct": 0.95
+      },
+      {
+        "group": "4",
+        "count": 48,
+        "share_pct": 2.41
+      },
+      {
+        "group": "5",
+        "count": 1772,
+        "share_pct": 88.87
+      }
+    ]
+  },
+  "sentiment": [
+    {
+      "group": "Положительная",
+      "count": 1820,
+      "share_pct": 91.27
+    },
+    {
+      "group": "Отрицательная",
+      "count": 174,
+      "share_pct": 8.73
+    }
+  ],
+  "by_bank": [
+    {
+      "group": "Альфа-Банк",
+      "reviews": 533,
+      "share_pct": 26.73,
+      "mean_grade": 4.75
+    },
+    {
+      "group": "Совкомбанк",
+      "reviews": 318,
+      "share_pct": 15.95,
+      "mean_grade": 4.69
+    },
+    {
+      "group": "Т-Банк",
+      "reviews": 245,
+      "share_pct": 12.29,
+      "mean_grade": 4.64
+    },
+    {
+      "group": "КАМКОМБАНК",
+      "reviews": 133,
+      "share_pct": 6.67,
+      "mean_grade": 4.99
+    },
+    {
+      "group": "Вайлдберриз Банк",
+      "reviews": 112,
+      "share_pct": 5.62,
+      "mean_grade": 4.89
+    },
+    {
+      "group": "Яндекс Банк",
+      "reviews": 88,
+      "share_pct": 4.41,
+      "mean_grade": 4.69
+    },
+    {
+      "group": "Россельхозбанк",
+      "reviews": 81,
+      "share_pct": 4.06,
+      "mean_grade": 4.85
+    },
+    {
+      "group": "МТС Банк",
+      "reviews": 65,
+      "share_pct": 3.26,
+      "mean_grade": 4.52
+    },
+    {
+      "group": "ОТП Банк",
+      "reviews": 56,
+      "share_pct": 2.81,
+      "mean_grade": 4.34
+    },
+    {
+      "group": "Газпромбанк",
+      "reviews": 55,
+      "share_pct": 2.76,
+      "mean_grade": 4.24
+    },
+    {
+      "group": "ВТБ",
+      "reviews": 49,
+      "share_pct": 2.46,
+      "mean_grade": 3.31
+    },
+    {
+      "group": "МТС Деньги (ЭКСИ-Банк)",
+      "reviews": 34,
+      "share_pct": 1.71,
+      "mean_grade": 4.32
+    },
+    {
+      "group": "БСПБ",
+      "reviews": 33,
+      "share_pct": 1.65,
+      "mean_grade": 5
+    },
+    {
+      "group": "Кредит Европа Банк",
+      "reviews": 30,
+      "share_pct": 1.5,
+      "mean_grade": 5
+    },
+    {
+      "group": "ПСБ",
+      "reviews": 29,
+      "share_pct": 1.45,
+      "mean_grade": 3.79
+    },
+    {
+      "group": "Московский кредитный банк (МКБ)",
+      "reviews": 25,
+      "share_pct": 1.25,
+      "mean_grade": 4.84
+    },
+    {
+      "group": "Банк ДОМ.РФ",
+      "reviews": 21,
+      "share_pct": 1.05,
+      "mean_grade": 4.62
+    },
+    {
+      "group": "Прочие банки",
+      "reviews": 87,
+      "share_pct": 4.36,
+      "mean_grade": 4.02
+    }
+  ],
+  "by_month_utc": [
+    {
+      "group": "2026-04",
+      "reviews": 749,
+      "share_pct": 37.56,
+      "mean_grade": 4.58
+    },
+    {
+      "group": "2026-05",
+      "reviews": 1245,
+      "share_pct": 62.44,
+      "mean_grade": 4.67
+    }
+  ],
+  "comments": {
+    "known": 1792,
+    "missing": 202,
+    "known_pct": 89.87,
+    "average_known": 1.61,
+    "median_known": 1.0
+  },
+  "annotation": {
+    "sentences": 15823,
+    "tokens": 283677,
+    "unique_lemmas": 7531,
+    "tokens_with_lemma": 226449,
+    "tokens_without_lemma": 57228,
+    "nonpunctuation_tokens_without_lemma": 11589,
+    "punctuation": 45639,
+    "tokens_with_multiple_analyses": 68,
+    "lemma_coverage_pct": 79.83,
+    "nonpunctuation_lemma_coverage_pct": 95.13
+  },
+  "length_distributions": {
+    "characters_per_review": {
+      "mean": 783.11,
+      "median": 625.0,
+      "p25": 410.25,
+      "p75": 963.75,
+      "p90": 1434.5,
+      "p95": 1750.8
+    },
+    "sentences_per_review": {
+      "mean": 7.94,
+      "median": 7.0,
+      "p25": 4.0,
+      "p75": 10.0,
+      "p90": 14.0,
+      "p95": 17.0
+    },
+    "tokens_per_sentence": {
+      "mean": 17.93,
+      "median": 15,
+      "p25": 9.0,
+      "p75": 22.0,
+      "p90": 33.0,
+      "p95": 43.0
+    },
+    "tokens_per_review": {
+      "mean": 142.27,
+      "median": 114.0,
+      "p25": 74.0,
+      "p75": 175.0,
+      "p90": 254.0,
+      "p95": 319.1
+    }
+  },
+  "part_of_speech": [
+    {
+      "group": "S",
+      "count": 76896,
+      "share_pct": 27.11
+    },
+    {
+      "group": "PUNCT",
+      "count": 45639,
+      "share_pct": 16.09
+    },
+    {
+      "group": "V",
+      "count": 40649,
+      "share_pct": 14.33
+    },
+    {
+      "group": "PR",
+      "count": 30166,
+      "share_pct": 10.63
+    },
+    {
+      "group": "CONJ",
+      "count": 17315,
+      "share_pct": 6.1
+    },
+    {
+      "group": "SPRO",
+      "count": 14251,
+      "share_pct": 5.02
+    },
+    {
+      "group": "ADV",
+      "count": 13972,
+      "share_pct": 4.93
+    },
+    {
+      "group": "A",
+      "count": 13785,
+      "share_pct": 4.86
+    },
+    {
+      "group": "NUM",
+      "count": 9463,
+      "share_pct": 3.34
+    },
+    {
+      "group": "APRO",
+      "count": 8350,
+      "share_pct": 2.94
+    },
+    {
+      "group": "PART",
+      "count": 6898,
+      "share_pct": 2.43
+    },
+    {
+      "group": "ADVPRO",
+      "count": 3131,
+      "share_pct": 1.1
+    },
+    {
+      "group": "Без тега",
+      "count": 2758,
+      "share_pct": 0.97
+    },
+    {
+      "group": "ANUM",
+      "count": 343,
+      "share_pct": 0.12
+    },
+    {
+      "group": "Прочее / не указано",
+      "count": 61,
+      "share_pct": 0.02
+    }
+  ],
+  "selected_lemmas": [
+    {
+      "lemma": "карта",
+      "reviews": 952,
+      "reviews_share_pct": 47.74,
+      "tokens": 2484
+    },
+    {
+      "lemma": "приложение",
+      "reviews": 805,
+      "reviews_share_pct": 40.37,
+      "tokens": 1273
+    },
+    {
+      "lemma": "оператор",
+      "reviews": 642,
+      "reviews_share_pct": 32.2,
+      "tokens": 1204
+    },
+    {
+      "lemma": "поддержка",
+      "reviews": 623,
+      "reviews_share_pct": 31.24,
+      "tokens": 990
+    },
+    {
+      "lemma": "счёт / счет",
+      "reviews": 536,
+      "reviews_share_pct": 26.88,
+      "tokens": 1033
+    },
+    {
+      "lemma": "условие",
+      "reviews": 433,
+      "reviews_share_pct": 21.72,
+      "tokens": 678
+    },
+    {
+      "lemma": "обслуживание",
+      "reviews": 349,
+      "reviews_share_pct": 17.5,
+      "tokens": 459
+    },
+    {
+      "lemma": "комиссия",
+      "reviews": 311,
+      "reviews_share_pct": 15.6,
+      "tokens": 569
+    },
+    {
+      "lemma": "кешбэк / кэшбэк",
+      "reviews": 306,
+      "reviews_share_pct": 15.35,
+      "tokens": 824
+    },
+    {
+      "lemma": "отделение",
+      "reviews": 226,
+      "reviews_share_pct": 11.33,
+      "tokens": 326
+    },
+    {
+      "lemma": "подписка",
+      "reviews": 215,
+      "reviews_share_pct": 10.78,
+      "tokens": 434
+    },
+    {
+      "lemma": "перевод",
+      "reviews": 190,
+      "reviews_share_pct": 9.53,
+      "tokens": 342
+    },
+    {
+      "lemma": "процент",
+      "reviews": 186,
+      "reviews_share_pct": 9.33,
+      "tokens": 337
+    },
+    {
+      "lemma": "списание",
+      "reviews": 185,
+      "reviews_share_pct": 9.28,
+      "tokens": 268
+    },
+    {
+      "lemma": "вклад",
+      "reviews": 168,
+      "reviews_share_pct": 8.43,
+      "tokens": 455
+    },
+    {
+      "lemma": "платёж / платеж",
+      "reviews": 149,
+      "reviews_share_pct": 7.47,
+      "tokens": 292
+    },
+    {
+      "lemma": "возврат",
+      "reviews": 143,
+      "reviews_share_pct": 7.17,
+      "tokens": 184
+    },
+    {
+      "lemma": "лимит",
+      "reviews": 123,
+      "reviews_share_pct": 6.17,
+      "tokens": 267
+    },
+    {
+      "lemma": "доставка",
+      "reviews": 118,
+      "reviews_share_pct": 5.92,
+      "tokens": 168
+    },
+    {
+      "lemma": "банкомат",
+      "reviews": 96,
+      "reviews_share_pct": 4.81,
+      "tokens": 183
+    },
+    {
+      "lemma": "кредит",
+      "reviews": 94,
+      "reviews_share_pct": 4.71,
+      "tokens": 186
+    },
+    {
+      "lemma": "тариф",
+      "reviews": 56,
+      "reviews_share_pct": 2.81,
+      "tokens": 77
+    }
+  ]
+}

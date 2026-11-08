@@ -1,0 +1,30 @@
+name: bankiru-study
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${BANKIRU_DB_NAME:-bankiru}
+      POSTGRES_USER: ${BANKIRU_DB_USER:-bankiru_user}
+      POSTGRES_PASSWORD: ${BANKIRU_DB_PASSWORD:?Set BANKIRU_DB_PASSWORD in .env}
+    ports:
+      - '127.0.0.1:${BANKIRU_DB_PORT:-15432}:5432'
+    volumes:
+      - bankiru_data:/var/lib/postgresql/data
+      - type: bind
+        source: ./database/schema/bankiru_schema.sql
+        target: /docker-entrypoint-initdb.d/01_schema.sql
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -h 127.0.0.1 -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  bankiru_data:
+    name: bankiru-study_bankiru_data

@@ -1,0 +1,19 @@
+services:
+  web:
+    build: ./web
+    environment:
+      PGHOST: postgres
+      PGPORT: '5432'
+      PGDATABASE: ${BANKIRU_DB_NAME:-bankiru}
+      PGUSER: ${BANKIRU_DB_USER:-bankiru_user}
+      PGPASSWORD: ${BANKIRU_DB_PASSWORD:?Set BANKIRU_DB_PASSWORD in .env}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '127.0.0.1:${BANKIRU_WEB_PORT:-5001}:5000'
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=4).close()"]
+      interval: 5s
+      timeout: 5s
+      retries: 10

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ row.title }} · Архив отзывов{% endblock %}
+{% block content %}
+<article class="detail">
+  <a class="back" href="{{ url_for('index', q=lemma, mode='lemma' if lemma else 'text') }}">← К отзывам</a>
+  <div class="meta"><span>{{ row.name }}</span><time datetime="{{ row.date_utc }}">{{ row.date_utc.strftime('%d.%m.%Y') }}</time><span class="grade">{{ row.grade }} / 5</span></div>
+  <h1>{{ row.title }}</h1>
+  {% if row.comments_count is not none %}<p class="quiet">Комментариев: {{ row.comments_count }}</p>{% endif %}
+  {% if lemma and sentences %}
+  <section class="matches"><h2>Предложения с леммой «{{ lemma }}»</h2>
+    <ol>{% for s in sentences %}<li value="{{ s.position }}">{{ s.text }}</li>{% endfor %}</ol>
+  </section>
+  {% endif %}
+  <h2>Текст отзыва</h2><p class="full-text">{{ row.text }}</p>
+</article>
+{% endblock %}

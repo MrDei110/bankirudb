@@ -1,0 +1,53 @@
+name: bankiru-demo
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: bankiru_demo
+      POSTGRES_USER: demo
+      # Fixed credential for this isolated, disposable sample database only.
+      POSTGRES_PASSWORD: demo-only-local
+    volumes:
+      - demo_data:/var/lib/postgresql/data
+      - type: bind
+        source: ./database/schema/bankiru_schema.sql
+        target: /docker-entrypoint-initdb.d/01_schema.sql
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./demo/seed.sql
+        target: /docker-entrypoint-initdb.d/02_seed.sql
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -h 127.0.0.1 -U demo -d bankiru_demo']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  web:
+    build: ./web
+    environment:
+      BANKIRU_DEMO: '1'
+      PGHOST: postgres
+      PGPORT: '5432'
+      PGDATABASE: bankiru_demo
+      PGUSER: demo
+      PGPASSWORD: demo-only-local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '127.0.0.1:5002:5000'
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=4).close()"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  demo_data:

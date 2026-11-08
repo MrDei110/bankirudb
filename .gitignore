@@ -1,0 +1,20 @@
+# Local settings and generated files
+.env
+.env.*
+!.env.example
+/.local/
+__pycache__/
+*.py[cod]
+.venv/
+*.log
+*.tmp
+
+# Real reviews, derived text and database backups are local only.
+/data/*
+!/data/README.md
+*.dump
+*.backup
+*.zip
+
+# Toad's local model contains workstation paths. SQL schema is tracked.
+*.txp
