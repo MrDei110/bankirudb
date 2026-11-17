@@ -1,0 +1,5 @@
+{% macro highlighted(parts) -%}
+  {%- for value, match in parts -%}
+    {%- if match -%}<mark>{{ value }}</mark>{%- else -%}{{ value }}{%- endif -%}
+  {%- endfor -%}
+{%- endmacro %}
